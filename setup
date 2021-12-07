@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+if [[ -z $STOW_FOLDERS ]]; then
+    STOW_FOLDERS="i3,nvim,media,zsh,programs"
+fi
+
+if [[ -z $DOTFILES ]]; then
+    DOTFILES=$HOME/dots
+fi
+
+STOW_FOLDERS=$STOW_FOLDERS DOTFILES=$DOTFILES $DOTFILES/install

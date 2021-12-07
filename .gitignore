@@ -1,0 +1,5 @@
+plugged/
+sessions/
+*.histfile
+*.zcompdump
+matlab/

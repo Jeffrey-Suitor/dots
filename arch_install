@@ -1,0 +1,13 @@
+sudo pacman -Syyu
+
+cd ~/dots/
+
+git submodule update --init --recursive
+
+cd ~/dots/programs/programs/yay/
+
+makepkg -si
+
+yay -S --needed --noconfirm < packages.txt
+
+
