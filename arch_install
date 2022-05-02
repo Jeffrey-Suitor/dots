@@ -10,4 +10,8 @@ makepkg -si
 
 yay -S --needed --noconfirm < packages.txt
 
+cd ~/dots
+
+./setup
+
 

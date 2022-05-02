@@ -13,8 +13,8 @@ exec --no-startup-id unclutter -grab &
 # exec --no-startup-id picom -b --no-fading-openclose
 exec --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id xrdb -merge /home/jeff/.Xresources
-exec --no-startup-id sh ~/.config/polybar/hack/launch.sh --hack
-exec --no-startup-id sh ~/.config/polybar/hack/scripts/pywal.sh ~/media/wallpapers/laptop
+exec --no-startup-id sh ~/.config/polybar/launch.sh
+exec --no-startup-id sh ~/.config/polybar/scripts/pywal.sh ~/media/wallpapers/laptop
 exec --no-startup-id spotify --force-device-scale-factor=2 
 exec --no-startup-id python3 $HOME/.config/i3/i3-swallow.py
 exec --no-startup-id teams
@@ -96,8 +96,8 @@ bindsym $mod+Shift+Control+BackSpace exec i3-msg exit
 bindsym $mod+Shift+p exec polybar-msg cmd toggle
 
 # Applications
-bindsym $mod+w exec firefox
-bindsym $mod+Shift+w exec firefox --private
+bindsym $mod+w exec brave
+bindsym $mod+Shift+w exec brave --private
 bindsym $mod+m exec spotify --force-device-scale-factor=2
 
 # Gaps
