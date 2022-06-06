@@ -10,11 +10,11 @@ for_window [class="Microsoft Teams - Preview"] move to workspace $ws9
 
 # Startup
 exec --no-startup-id unclutter -grab &
-# exec --no-startup-id picom -b --no-fading-openclose
+exec --no-startup-id picom -b --no-fading-openclose
 exec --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id xrdb -merge /home/jeff/.Xresources
-exec --no-startup-id sh ~/.config/polybar/launch.sh
-exec --no-startup-id sh ~/.config/polybar/scripts/pywal.sh ~/media/wallpapers/laptop
+exec_always --no-startup-id ~/.config/polybar/launch.sh &
+exec --no-startup-id wal -i ~/media/wallpapers/laptop
 exec --no-startup-id spotify --force-device-scale-factor=2 
 exec --no-startup-id python3 $HOME/.config/i3/i3-swallow.py
 exec --no-startup-id teams
@@ -43,9 +43,9 @@ bindsym $mod+Shift+Return exec cd "$(xcwd)" && exec kitty
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -combi-modi drun#run -show combi
-bindsym $mod+f exec --no-startup-id rofi -show filebrowser
-bindsym $mod+space exec --no-startup-id rofi -combi-modi window#ssh -show combi
+bindsym $mod+d exec --no-startup-id rofi -dpi 192 -combi-modi drun#run -show combi
+bindsym $mod+f exec --no-startup-id rofi -dpi 192 -show filebrowser
+bindsym $mod+space exec --no-startup-id rofi -dpi 192 -combi-modi window#ssh -show combi
 bindsym $mod+s exec --no-startup-id i3-layout-manager
 
 # change focus

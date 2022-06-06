@@ -40,12 +40,26 @@ zle -N history-beginning-search-forward-end history-search-end
 
 ### Set variables
 #################
-PATH="/usr/local/bin:/usr/local/sbin/:$PATH"
+PATH="/home/jeff/.local/bin:/usr/local/bin:/usr/local/sbin/:$PATH"
 HISTFILE=$HOME/.zhistory
 HISTSIZE=1000
 SAVEHIST=1000
 LS_COLORS='rs=0:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:';
 GTK_USE_PORTAL=1
+
+# Android SDK
+# JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
+unset JAVA_OPTS
+ANDROID_SDK_ROOT='/opt/android-sdk'
+JAVA_HOME='/usr/lib/jvm/java-8-openjdk'
+ANDROID_HOME='/opt/android-sdk/'
+PATH=$PATH:$ANDROID_HOME/emulator
+PATH=$PATH:$ANDROID_HOME/platform-tools/
+PATH=$PATH:$ANDROID_HOME/tools/bin/
+PATH=$PATH:$ANDROID_HOME/tools/
+PATH=$ANDROID_HOME/emulator:$PATH
+
+
 
 ### Load colors
 ###############
@@ -99,6 +113,9 @@ PR_NO_COLOR="%{$terminfo[sgr0]%}"
 PS1="[%(!.${PR_RED}%n.$PR_LIGHT_YELLOW%n)%(!.${PR_LIGHT_YELLOW}@.$PR_RED@)$PR_NO_COLOR%(!.${PR_LIGHT_RED}%U%m%u.${PR_LIGHT_GREEN}%U%m%u)$PR_NO_COLOR:%(!.${PR_RED}%2c.${PR_BLUE}%2c)$PR_NO_COLOR]%(?..[${PR_LIGHT_RED}%?$PR_NO_COLOR])%(!.${PR_LIGHT_RED}#.${PR_LIGHT_GREEN}$) "
 RPS1="$PR_LIGHT_YELLOW(%D{%m-%d %H:%M})$PR_NO_COLOR"
 unsetopt ALL_EXPORT
+
+### Set packages
+pacman -Qqe > ~/dots/packages.txt
 
 ### set common functions
 #############
@@ -172,9 +189,27 @@ function makezip() { zip -r "${1%%/}.zip" "$1" ; }
 
 function my_ps() { ps $@ -u $USER -o pid,%cpu,%mem,bsdtime,command ; }
 
-mcd () {
+function mcd () {
     mkdir -p $1
     cd $1
+}
+
+function screenshot () {
+    DIR="${HOME}"
+    DATE="$(date +%Y%m%d-%H%M%S)"
+    NAME="${DIR}/screenshot-${DATE}.png"
+
+    # Check if the dir to store the screenshots exists, else create it:
+    if [ ! -d "${DIR}" ]; then mkdir -p "${DIR}"; fi
+
+    # Screenshot a selected window
+    if [ "$1" = "win" ]; then import -format png "${NAME}"; fi
+
+    # Screenshot the entire screen
+    if [ "$1" = "scr" ]; then import -format png -window root "${NAME}"; fi
+
+    # Screenshot a selected area
+    if [ "$1" = "area" ]; then import -format png "${NAME}"; fi
 }
 
 ### Set alias

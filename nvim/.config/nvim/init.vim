@@ -46,7 +46,7 @@ Plug 'ray-x/lsp_signature.nvim' "show signature on typing
 
 "Appearance
 Plug 'romgrk/barbar.nvim' "Better jump for tabs
-Plug 'chentau/marks.nvim' "Better marks usage
+Plug 'chentoast/marks.nvim' "Better marks usage
 Plug 'hoob3rt/lualine.nvim' "Lua statusline
 Plug 'lukas-reineke/indent-blankline.nvim' "indent blanklines
 Plug 'ryanoasis/vim-devicons' "Icons
@@ -71,7 +71,7 @@ Plug 'jmcantrell/vim-virtualenv', {'for': 'python'} "Virtual env wrapper for pyt
 
 "Colorschemes
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'catppuccin/nvim'
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
 "Experimental
 Plug 'sbdchd/vim-run' "Run the current file
@@ -117,10 +117,15 @@ let g:rooter_cd_cmd = 'lcd'
     require("lsp_signature").setup()
     require('marks').setup({})
     require("stabilize").setup()
+    require("catppuccin").setup({
+        integrations = {
+            which_key = true
+        }
+    })
 
     require('lualine').setup{
         options = {
-            theme = 'tokyonight'
+            theme = 'catppuccin'
         }
     }
 
@@ -166,45 +171,24 @@ let g:rooter_cd_cmd = 'lcd'
         }
     })
 
-    local null_ls = require("null-ls")
-    null_ls.setup({
+    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+    require("null-ls").setup({
         sources = {
-    --         require('null-ls').builtins.code_actions.proselint,
-    --         require('null-ls').builtins.code_actions.eslint_d,
-    --         require('null-ls').builtins.diagnostics.tsc,
-    --         require('null-ls').builtins.diagnostics.write_good,
-    --         require('null-ls').builtins.diagnostics.vint,
-    --         require('null-ls').builtins.diagnostics.vale,
-    --         require('null-ls').builtins.diagnostics.stylelint,
-    --         require('null-ls').builtins.diagnostics.pylint,
-    --         require('null-ls').builtins.diagnostics.proselint,
-    --         require('null-ls').builtins.diagnostics.markdownlint,
-    --         require('null-ls').builtins.diagnostics.pylama,
-    --         require('null-ls').builtins.diagnostics.flake8,
-    --         require('null-ls').builtins.diagnostics.eslint_d,
-            -- require('null-ls').builtins.diagnostics.cppcheck,
-    --         require('null-ls').builtins.diagnostics.codespell,
-    --         require('null-ls').builtins.diagnostics.chktex,
-    --         require('null-ls').builtins.diagnostics.mypy,
-    --         require('null-ls').builtins.formatting.yapf,
-    --         require('null-ls').builtins.formatting.uncrustify,
-    --         require('null-ls').builtins.formatting.trim_whitespace,
-    --         require('null-ls').builtins.formatting.trim_newlines,
-    --         require('null-ls').builtins.formatting.stylelint,
-    --         require('null-ls').builtins.formatting.sqlformat,
-    --         require('null-ls').builtins.formatting.reorder_python_imports,
-    --         require('null-ls').builtins.formatting.prettierd,
-    --         require('null-ls').builtins.formatting.markdownlint,
-    --         require('null-ls').builtins.formatting.latexindent,
-    --         require('null-ls').builtins.formatting.json_tool,
-    --         require('null-ls').builtins.formatting.reorder_python_imports,
-    --         require('null-ls').builtins.formatting.isort,
-    --         require('null-ls').builtins.formatting.eslint_d,
-    --         require('null-ls').builtins.formatting.dart_format,
-    --         require('null-ls').builtins.formatting.codespell,
-    --         require('null-ls').builtins.formatting.cmake_format,
-    --         require('null-ls').builtins.formatting.black
+            require("null-ls").builtins.formatting.stylua,
         },
+    on_attach = function(client, bufnr)
+        if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = augroup,
+                buffer = bufnr,
+                callback = function()
+                    -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+                    vim.lsp.buf.formatting_sync()
+                end,
+            })
+        end
+    end,
     })
 
     local wk = require('which-key')

@@ -6,3 +6,8 @@ configuration {
   font: "mononoki Nerd Font Mono 25";
 }
 @import "~/.cache/wal/colors-rofi-dark"
+//@theme "/home/jeff/.local/share/rofi/themes/squared-nord.rasi"
+//@theme "/home/jeff/.local/share/rofi/themes/squared-nord.rasi"
+//@theme "/home/jeff/.local/share/rofi/themes/nord.rasi"
+//@theme "/home/jeff/.local/share/rofi/themes/simple-tokyonight.rasi"
+@theme "/home/jeff/.local/share/rofi/themes/nord.rasi"
