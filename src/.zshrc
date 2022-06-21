@@ -48,7 +48,7 @@ zle -N history-beginning-search-forward-end history-search-end
 
 ### Set variables
 #################
-PATH="/home/jeff/.local/bin:/usr/local/bin:/usr/local/sbin/:$PATH"
+PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin/:$PATH"
 HISTFILE=$HOME/.config/zsh/zhistory
 HISTSIZE=1000
 SAVEHIST=1000
@@ -68,6 +68,7 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin/
 export PATH=$PATH:$ANDROID_HOME/tools/
 export PATH=$ANDROID_HOME/emulator:$PATH
 export PATH="$PATH:$GEM_HOME/bin"
+export PATH="$PATH:$HOME/scripts"
 
 
 ### Load colors

@@ -27,6 +27,8 @@ catppuccin-wallpapers-git
 chromium
 clash
 clipmenu
+codespell
+composer
 coreutils
 cpupower
 dart
@@ -41,6 +43,7 @@ dosfstools
 dunst
 e2fsprogs
 efibootmgr
+eslint_d
 fakeroot
 fd
 feh
@@ -49,6 +52,7 @@ file
 filesystem
 findutils
 firebase-tools
+firefox
 flex
 flutter
 fzf
@@ -59,6 +63,7 @@ gettext
 git
 git-credential-manager-core-bin
 glibc
+glow
 gnome-keyring
 grep
 groff
@@ -77,6 +82,7 @@ intel-ucode
 iproute2
 iputils
 jdk8-openjdk
+julia
 kitty
 kompare
 kotlin
@@ -107,10 +113,12 @@ mpd
 nautilus
 neovim
 neovim-plug
+neovim-symlinks
 nerd-fonts-complete
 network-manager-applet
 networkmanager
 networkmanager-dmenu-git
+nodejs-neovim
 ntfs-3g
 ntp
 nvim-packer-git
@@ -127,16 +135,19 @@ pipewire
 pkgconf
 platformio
 playerctl
+plocate
 polybar
 polybar-themes-git
 powerkit
 procps-ng
 psmisc
+pulse-secure
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
 python-i3ipc
 python-pip
+python-pynvim
 python-pywal
 qmk
 redshift
@@ -222,6 +233,7 @@ xorg-xwininfo
 xorg-xwud
 xterm
 xz
+yarn
 yay
 zathura
 zathura-pdf-mupdf
