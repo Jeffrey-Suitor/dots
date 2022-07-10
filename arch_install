@@ -14,4 +14,7 @@ cd ~/dots
 
 ./setup
 
+sudo echo 'export ZDOTDIR="$HOME"/.config/zsh' >> /etc/zsh/zshenv
 
+echo "Go to https://github.com/Litarvan/lightdm-webkit-theme-litarvan to setup greeter"
+echo "Add the kitty themes to theme.sh"

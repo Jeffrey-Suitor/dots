@@ -5,6 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
 
 #######################################################
 ####### Anarchy ZSH configuration file    #######
@@ -55,12 +59,12 @@ SAVEHIST=1000
 LS_COLORS='rs=0:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:';
 GTK_USE_PORTAL=1
 
-# Android SDK
-# JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
 unset JAVA_OPTS
 export ANDROID_SDK_ROOT='/opt/android-sdk'
 export JAVA_HOME='/usr/lib/jvm/java-8-openjdk'
-export ANDROID_HOME='/opt/android-sdk/'
+export PATH=$JAVA_HOME/bin:$PATH
+export ANDROID_HOME="$XDG_DATA_HOME"/android
+export ANDROID_SDK_HOME="$XDG_DATA_HOME"/android
 export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools/
@@ -69,19 +73,32 @@ export PATH=$PATH:$ANDROID_HOME/tools/
 export PATH=$ANDROID_HOME/emulator:$PATH
 export PATH="$PATH:$GEM_HOME/bin"
 export PATH="$PATH:$HOME/scripts"
+export PATH=$PATH:$XDG_DATA_HOME/npm/bin
+
+
+export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
+export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export NVM_DIR="$XDG_DATA_HOME"/nvm
+export PLATFORMIO_CORE_DIR="$XDG_DATA_HOME"/platformio
+export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+export NVM_DIR="$XDG_DATA_HOME"/nvm
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 
 
 ### Load colors
 ###############
-autoload colors zsh/terminfo
-if [[ "$terminfo[colors]" -ge 8 ]]; then
-   colors
-fi
-for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
-   eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-   eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
-   (( count = $count + 1 ))
-done
+# autoload colors zsh/terminfo
+# if [[ "$terminfo[colors]" -ge 8 ]]; then
+#    colors
+# fi
+# for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
+#    eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
+#    eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
+#    (( count = $count + 1 ))
+# done
 
 ### Set Colors to use in in the script
 #############
@@ -119,9 +136,6 @@ NC="\e[m"               # Color Reset
 
 ### Set prompt
 ##############
-PR_NO_COLOR="%{$terminfo[sgr0]%}"
-PS1="[%(!.${PR_RED}%n.$PR_LIGHT_YELLOW%n)%(!.${PR_LIGHT_YELLOW}@.$PR_RED@)$PR_NO_COLOR%(!.${PR_LIGHT_RED}%U%m%u.${PR_LIGHT_GREEN}%U%m%u)$PR_NO_COLOR:%(!.${PR_RED}%2c.${PR_BLUE}%2c)$PR_NO_COLOR]%(?..[${PR_LIGHT_RED}%?$PR_NO_COLOR])%(!.${PR_LIGHT_RED}#.${PR_LIGHT_GREEN}$) "
-RPS1="$PR_LIGHT_YELLOW(%D{%m-%d %H:%M})$PR_NO_COLOR"
 unsetopt ALL_EXPORT
 
 ### Set packages
@@ -347,7 +361,10 @@ source /usr/share/nvm/init-nvm.sh
 
 source <(curl -sL https://git.io/zi-loader); zzinit
 zi light z-shell/z-a-meta-plugins
-zi light-mode for z-shell/z-a-meta-plugins @annexes @ext-git @zsh-users+fast @z-shell @console-tools @fuzzy @romkatv
+zi light-mode for @annexes @ext-git @zsh-users+fast @z-shell @console-tools @fuzzy @romkatv
+
+zi ice atload"zpcdreplay" atclone'./zplug.zsh'
+zi light g-plane/zsh-yarn-autocompletions
 
 if command -v theme.sh > /dev/null; then
 	[ -e ~/.theme_history ] && theme.sh "$(theme.sh -l|tail -n1)"
@@ -373,4 +390,3 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-

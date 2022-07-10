@@ -1,4 +1,4 @@
- local opt = vim.opt
+local opt = vim.opt
 opt.backspace = { "indent", "eol", "start" }
 opt.belloff = "all"
 opt.breakindent = true
@@ -39,7 +39,7 @@ opt.signcolumn = "yes:1" -- always show signcolumns
 opt.smartcase = true -- Do not ignore case with capitals
 opt.smartindent = true -- Insert indents automatically
 opt.scrolloff = 999
-opt.showbreak="\\ "
+opt.showbreak = "\\ "
 opt.spelllang = { "en_ca" }
 opt.splitbelow = true -- Put new windows below current
 opt.splitright = true -- Put new windows right of current
@@ -50,4 +50,5 @@ opt.wrap = true
 opt.mouse = "a"
 opt.undodir = vim.fn.stdpath("config") .. "/undo"
 opt.undofile = true
-
+vim.opt.cmdheight = 1
+vim.opt.wildignore = "*.zip,*.png,*.jpg,*.gif,*.pdf,*DS_Store*,*/.git/*,*/node_modules/*,*/build/*,package-lock.json"

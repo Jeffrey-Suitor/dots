@@ -3,3 +3,4 @@ sessions/
 *.histfile
 *.zcompdump
 matlab/
+undo

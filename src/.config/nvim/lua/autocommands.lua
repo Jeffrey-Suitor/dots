@@ -24,13 +24,3 @@ api.nvim_create_autocmd(
     "BufReadPost",
     { command = [[if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif]] }
   )
-
--- api.nvim_create_augroup("SmallSpacing", { clear = true })
--- api.nvim_create_autocmd("{BufEnter}", { pattern = "*.ts", command = "setlocal nonumber", group = "SmallSpacing" })
-
--- augroup SmallSpacing
---     autocmd!
---     autocmd FileType typescript setlocal ts=2 sw=2 sts=2 expandtab colorcolumn=80
---     autocmd FileType typescriptreact setlocal ts=2 sw=2 sts=2 expandtab colorcolumn=80
---     autocmd FileType c setlocal ts=2 sw=2 sts=2 expandtab colorcolumn=80
--- augroup END
