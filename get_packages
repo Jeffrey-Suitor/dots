@@ -1,1 +1,1 @@
-pacman -Qe > packages.txt
+yay -Qe > packages.txt
