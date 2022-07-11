@@ -1,4 +1,4 @@
 Xft.dpi: 192
 rofi.dpi: 192
 
-#include "/home/jeff/.config/Xresources/catpuccino-xresources"
+#include "/home/jeff/.config/X11/catpuccino-xresources"

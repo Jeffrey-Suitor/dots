@@ -16,7 +16,7 @@ exec --no-startup-id unclutter -grab &
 # exec --no-startup-id picom -b --no-fading-openclose
 exec --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id slack
-exec --no-startup-id xrdb -merge /home/jeff/.Xresources
+exec --no-startup-id xrdb -merge /home/jeff/.config/X11/xresources
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id spotify --force-device-scale-factor=2
 exec --no-startup-id python3 $HOME/.config/i3/i3-swallow.py

@@ -4,3 +4,4 @@ sessions/
 *.zcompdump
 matlab/
 undo
+zhistory

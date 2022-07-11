@@ -52,7 +52,7 @@ dunst 1.9.0-1
 e2fsprogs 1.46.5-4
 editorconfig-checker 2.5.0-1
 efibootmgr 17-2
-eslint 8.18.0-1
+eslint 8.19.0-1
 eslint_d 12.1.0-2
 fakeroot 1.29-1
 fd 8.4.0-1
@@ -108,9 +108,9 @@ lightdm-gtk-greeter 1:2.0.8-2
 lightdm-gtk-greeter-settings 1.2.2-7
 lightdm-settings 1.5.8-1
 lightdm-webkit-theme-litarvan 3.1.0-1
-linux 5.18.9.arch1-1
+linux 5.18.10.arch1-1
 linux-firmware 20220610.7b71b75-1
-linux-headers 5.18.9.arch1-1
+linux-headers 5.18.10.arch1-1
 luarocks 3.9.0-1
 lvm2 2.03.16-1
 lxappearance-gtk3 0.6.3-4
@@ -121,7 +121,7 @@ man-pages 5.13-1
 meld 3.20.4-2
 mesa 22.1.3-1
 mkinitcpio-firmware 1.3.0-2
-mpd 0.23.7-1
+mpd 0.23.8-1
 nautilus 42.2-1
 neovim-git 0.7.0.r827.g6f6286e4f9-1
 neovim-plug 0.11.0-3
@@ -140,7 +140,7 @@ openocd 1:0.11.0-2
 otf-material-icons-git 4.0.0.r43.g8825e59fa98-1
 packagekit 1.2.5-1
 pacman 6.0.1-5
-papirus-icon-theme 20220606-1
+papirus-icon-theme 20220710-1
 patch 2.7.6-8
 pavucontrol 1:5.0+r35+g964f298-1
 pciutils 3.8.0-2
@@ -174,7 +174,7 @@ sddm 0.19.0-8
 sddm-theme-catppuccin-git r40.da92da8-1
 sed 4.8-1
 shadow 4.11.1-1
-shellcheck 0.8.0-134
+shellcheck 0.8.0-139
 slack-desktop 4.27.156-1
 spotify 1:1.1.84.716-2
 stow 2.3.1-3
