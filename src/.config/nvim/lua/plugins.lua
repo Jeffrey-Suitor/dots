@@ -7,10 +7,14 @@ return require("packer").startup({
 		use({ "folke/which-key.nvim", config = get_setup("which-key") })
 
 		--------------------- LSP -------------------
-		use({ "williamboman/nvim-lsp-installer", config = get_setup("lsp-installer") })
-		use({ "neovim/nvim-lspconfig", config = get_setup("lsp") })
-		use({ "jose-elias-alvarez/null-ls.nvim", config = get_setup("null-ls") })
-		use({ "takac/vim-hardtime", config = get_setup("hardtime") })
+		use({
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			"neovim/nvim-lspconfig",
+			"jose-elias-alvarez/null-ls.nvim",
+			config = get_setup("lsp"),
+		})
 		----------------------------------------------
 
 		----------------- TREESITTER -----------------
@@ -22,6 +26,8 @@ return require("packer").startup({
 		----------------------------------------------
 
 		-------------- UX IMPROVEMENTS ---------------
+		use({ "takac/vim-hardtime", config = get_setup("hardtime") })
+		use({ "szw/vim-maximizer" })
 		use({ "sindrets/winshift.nvim" })
 		use({ "mrjones2014/smart-splits.nvim" })
 		use({ "nacro90/numb.nvim", config = get_setup("numb") })
@@ -35,7 +41,10 @@ return require("packer").startup({
 		use({ "tpope/vim-sleuth" })
 		use({ "editorconfig/editorconfig" })
 		use({ "chaoren/vim-wordmotion" })
-		use({ "airblade/vim-rooter", config = get_setup("rooter") })
+		use({
+			"ahmedkhalf/project.nvim",
+			config = get_setup("project"),
+		})
 		use({ "wellle/targets.vim" })
 		use({ "jason0x43/vim-wildgitignore" })
 		use({ "tpope/vim-unimpaired" })
@@ -65,6 +74,10 @@ return require("packer").startup({
 		----------------------------------------------
 
 		--------------- CODE -------------------------
+		use({
+			"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+			config = get_setup("lsp_lines"),
+		})
 		use({ "windwp/nvim-autopairs", config = get_setup("autopairs") })
 		use({ "folke/trouble.nvim", config = get_setup("trouble") })
 		use({ "ray-x/lsp_signature.nvim", config = get_setup("lsp_signature") })
@@ -117,13 +130,10 @@ return require("packer").startup({
 			requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
 			config = get_setup("session-lens"),
 		})
-		use({
-			"nvim-telescope/telescope-fzf-native.nvim",
-			run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-		})
+		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 		use({
 			"nvim-telescope/telescope.nvim",
-			requires = { { "nvim-lua/plenary.nvim" } },
+			requires = { { "nvim-lua/plenary.nvim", "gbprod/yanky.nvim" } },
 			config = get_setup("telescope"),
 		})
 		----------------------------------------------

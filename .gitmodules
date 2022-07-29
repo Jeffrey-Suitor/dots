@@ -1,0 +1,12 @@
+[submodule "src/programs/yay"]
+	path = src/programs/yay
+	url = git@github.com:Jguer/yay.git
+[submodule "src/programs/kitty-catpuccin"]
+	path = src/programs/kitty-catpuccin
+	url = git@github.com:catppuccin/kitty.git
+[submodule "src/media"]
+	path = src/media
+	url = git@github.com:Jeffrey-Suitor/media.git
+[submodule "src/programs/AutoEq"]
+	path = src/programs/AutoEq
+	url = git@github.com:jaakkopasanen/AutoEq.git

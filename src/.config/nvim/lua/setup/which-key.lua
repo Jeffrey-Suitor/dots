@@ -38,7 +38,7 @@ wk.register({
 		},
 	},
 	r = { ":lua vim.lsp.buf.rename()<cr>", "rename" },
-	f = { ":lua vim.lsp.buf.formatting()<cr>", "format" },
+	F = { ":lua vim.lsp.buf.format()<cr>", "format" },
 	["\\"] = { ":nohlsearch<cr>", "clear highlight" },
 	["1"] = { ":Neogit<cr>", "Git window" },
 	["8"] = { ":Vista<cr>", "Symbols" },

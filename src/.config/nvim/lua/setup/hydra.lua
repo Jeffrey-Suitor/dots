@@ -27,15 +27,17 @@ local hint = [[
 ]]
 
 Hydra({
+	name = "Git",
 	hint = hint,
 	config = {
+		buffer = bufnr,
 		color = "pink",
 		invoke_on_body = true,
 		hint = {
-			position = "bottom",
 			border = "rounded",
 		},
 		on_enter = function()
+			vim.cmd("silent! %foldopen!")
 			vim.bo.modifiable = false
 			gitsigns.toggle_signs(true)
 			gitsigns.toggle_linehl(true)
@@ -60,7 +62,7 @@ Hydra({
 				end)
 				return "<Ignore>"
 			end,
-			{ expr = true },
+			{ expr = true, desc = "next hunk" },
 		},
 		{
 			"K",
@@ -73,23 +75,24 @@ Hydra({
 				end)
 				return "<Ignore>"
 			end,
-			{ expr = true },
+			{ expr = true, desc = "prev hunk" },
 		},
-		{ "s", ":Gitsigns stage_hunk<CR>", { silent = true } },
-		{ "u", gitsigns.undo_stage_hunk },
-		{ "S", gitsigns.stage_buffer },
-		{ "p", gitsigns.preview_hunk },
-		{ "d", gitsigns.toggle_deleted, { nowait = true } },
-		{ "b", gitsigns.blame_line },
+		{ "s", ":Gitsigns stage_hunk<CR>", { silent = true, desc = "stage hunk" } },
+		{ "u", gitsigns.undo_stage_hunk, { desc = "undo last stage" } },
+		{ "S", gitsigns.stage_buffer, { desc = "stage buffer" } },
+		{ "p", gitsigns.preview_hunk, { desc = "preview hunk" } },
+		{ "d", gitsigns.toggle_deleted, { nowait = true, desc = "toggle deleted" } },
+		{ "b", gitsigns.blame_line, { desc = "blame" } },
 		{
 			"B",
 			function()
 				gitsigns.blame_line({ full = true })
 			end,
+			{ desc = "blame show full" },
 		},
-		{ "/", gitsigns.show, { exit = true } }, -- show the base of the file
-		{ "<Enter>", "<cmd>Neogit<CR>", { exit = true } },
-		{ "q", nil, { exit = true, nowait = true } },
+		{ "/", gitsigns.show, { exit = true, desc = "show base file" } }, -- show the base of the file
+		{ "<Enter>", "<Cmd>Neogit<CR>", { exit = true, desc = "Neogit" } },
+		{ "q", nil, { exit = true, nowait = true, desc = "exit" } },
 	},
 })
 
@@ -103,14 +106,79 @@ local buffer_hydra = Hydra({
 		timeout = 2000,
 	},
 	heads = {
-		{ "h", cmd("BufferPrevious") },
-		{ "l", cmd("BufferNext"), { desc = "choose" } },
-		{ "H", cmd("BufferMovePrevious") },
-		{ "L", cmd("BufferMoveNext"), { desc = "move" } },
-		{ "q", cmd("BufferClose"), { desc = "close" } },
-		{ "b", cmd("Telescope buffers"), { exit = true, desc = "Explorer" } },
-		{ "od", cmd("BufferOrderByDirectory"), { desc = "by directory" } },
-		{ "ol", cmd("BufferOrderByLanguage"), { desc = "by language" } },
+		{
+			"h",
+			function()
+				vim.cmd("BufferPrevious")
+			end,
+			{ on_key = false },
+		},
+		{
+			"l",
+			function()
+				vim.cmd("BufferNext")
+			end,
+			{ desc = "choose", on_key = false },
+		},
+
+		{
+			"H",
+			function()
+				vim.cmd("BufferMovePrevious")
+			end,
+		},
+		{
+			"L",
+			function()
+				vim.cmd("BufferMoveNext")
+			end,
+			{ desc = "move" },
+		},
+
+		{
+			"p",
+			function()
+				vim.cmd("BufferPin")
+			end,
+			{ desc = "pin" },
+		},
+
+		{
+			"d",
+			function()
+				vim.cmd("BufferClose")
+			end,
+			{ desc = "close" },
+		},
+		{
+			"c",
+			function()
+				vim.cmd("BufferClose")
+			end,
+			{ desc = false },
+		},
+		{
+			"q",
+			function()
+				vim.cmd("BufferClose")
+			end,
+			{ desc = false },
+		},
+
+		{
+			"od",
+			function()
+				vim.cmd("BufferOrderByDirectory")
+			end,
+			{ desc = "by directory" },
+		},
+		{
+			"ol",
+			function()
+				vim.cmd("BufferOrderByLanguage")
+			end,
+			{ desc = "by language" },
+		},
 		{ "<Esc>", nil, { exit = true } },
 	},
 })
@@ -124,12 +192,14 @@ end
 vim.keymap.set("n", "gb", choose_buffer)
 
 local window_hint = [[
- ^^^^^^     Move     ^^^^^^   ^^    Size   ^^   ^^     Split
- ^^^^^^--------------^^^^^^   ^^-----------^^   ^^---------------
- ^ ^ _k_ ^ ^   ^ ^ _K_ ^ ^    ^   _<C-k>_   ^   _s_: horizontally
- _h_ ^ ^ _l_   _H_ ^ ^ _L_    _<C-h>_ _<C-l>_   _v_: vertically
- ^ ^ _j_ ^ ^   ^ ^ _J_ ^ ^    ^   _<C-j>_   ^   _q_: close
- focus^^^^^^   window^^^^^^   ^ _=_ equalize^   _b_: choose buffer
+ ^^^^^^^^^^^^     Move      ^^    Size   ^^   ^^     Split
+ ^^^^^^^^^^^^-------------  ^^-----------^^   ^^---------------
+ ^ ^ _k_ ^ ^  ^ ^ _K_ ^ ^   ^   _<C-k>_   ^   _s_: horizontally
+ _h_ ^ ^ _l_  _H_ ^ ^ _L_   _<C-h>_ _<C-l>_   _v_: vertically
+ ^ ^ _j_ ^ ^  ^ ^ _J_ ^ ^   ^   _<C-j>_   ^   _q_, _c_: close
+ focus^^^^^^  window^^^^^^  ^_=_: equalize^   _z_: maximize
+ ^ ^ ^ ^ ^ ^  ^ ^ ^ ^ ^ ^   ^^ ^          ^   _o_: remain only
+ _b_: choose buffer
 ]]
 
 Hydra({
@@ -183,9 +253,29 @@ Hydra({
 		{ "=", "<C-w>=", { desc = "equalize" } },
 
 		{ "s", "<C-w>s" },
+		{ "<C-s>", "<C-w><C-s>", { desc = false } },
 		{ "v", "<C-w>v" },
+		{ "<C-v>", "<C-w><C-v>", { desc = false } },
+
+		{ "w", "<C-w>w", { exit = true, desc = false } },
+		{ "<C-w>", "<C-w>w", { exit = true, desc = false } },
+
+		{ "z", cmd("MaximizerToggle!"), { desc = "maximize" } },
+		{ "<C-z>", cmd("MaximizerToggle!"), { exit = true, desc = false } },
+
+		{ "z", cmd("MaximizerToggle!"), { desc = "maximize" } },
+		{ "<C-z>", cmd("MaximizerToggle!"), { exit = true, desc = false } },
+
+		{ "o", "<C-w>o", { exit = true, desc = "remain only" } },
+		{ "<C-o>", "<C-w>o", { exit = true, desc = false } },
+
 		{ "b", choose_buffer, { exit = true, desc = "choose buffer" } },
-		{ "q", cmd([[try | close | catch /^Vim\%((\a\+)\)\=:E444:/ | endtry]]) },
+
+		{ "c", cmd([[try | close | catch /^Vim\%((\a\+)\)\=:E444:/ | endtry]]) },
+		{ "q", cmd([[try | close | catch /^Vim\%((\a\+)\)\=:E444:/ | endtry]]), { desc = "close window" } },
+		{ "<C-q>", cmd([[try | close | catch /^Vim\%((\a\+)\)\=:E444:/ | endtry]]), { desc = false } },
+		{ "<C-c>", cmd([[try | close | catch /^Vim\%((\a\+)\)\=:E444:/ | endtry]]), { desc = false } },
+
 		{ "<Esc>", nil, { exit = true, desc = false } },
 	},
 })

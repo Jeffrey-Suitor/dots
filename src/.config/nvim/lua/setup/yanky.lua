@@ -1,4 +1,4 @@
-require("yanky").setup{}
+require("yanky").setup({})
 
 vim.keymap.set("n", "p", "<Plug>(YankyPutAfter)", {})
 vim.keymap.set("n", "P", "<Plug>(YankyPutBefore)", {})

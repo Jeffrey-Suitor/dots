@@ -1,16 +1,19 @@
 local map = require("../utils").map
 
+-- Searching in all windows (including the current one) on the tab page.
 function leap_all_windows()
-	require("leap").leap({
-		["target-windows"] = vim.tbl_filter(function(win)
-			return vim.api.nvim_win_get_config(win).focusable
-		end, vim.api.nvim_tabpage_list_wins(0)),
-	})
+	local focusable_windows_on_tabpage = vim.tbl_filter(function(win)
+		return vim.api.nvim_win_get_config(win).focusable
+	end, vim.api.nvim_tabpage_list_wins(0))
+	require("leap").leap({ target_windows = focusable_windows_on_tabpage })
 end
 
-function leap_bidirectional()
-	require("leap").leap({ ["target-windows"] = { vim.api.nvim_get_current_win() } })
+-- Bidirectional search in the current window is just a specific case of the
+-- multi-window mode.
+function leap_current_window()
+	local current_window = vim.api.nvim_get_current_win()
+	require("leap").leap({ target_windows = { current_window } })
 end
 
-vim.keymap.set("n", "s", leap_bidirectional, { silent = true })
+vim.keymap.set("n", "s", leap_current_window, { silent = true })
 vim.keymap.set("n", "S", leap_all_windows, { silent = true })

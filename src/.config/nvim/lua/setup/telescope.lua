@@ -20,6 +20,7 @@ require("telescope").load_extension("session-lens")
 require("telescope").load_extension("file_browser")
 require("telescope").load_extension("repo")
 require("telescope").load_extension("yank_history")
+require("telescope").load_extension("projects")
 
 local wk = require("which-key")
 

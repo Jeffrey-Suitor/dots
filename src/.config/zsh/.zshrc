@@ -78,7 +78,7 @@ export PATH=$PATH:$XDG_DATA_HOME/npm/bin
 
 export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
 export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
-export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+# export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export NVM_DIR="$XDG_DATA_HOME"/nvm
 export PLATFORMIO_CORE_DIR="$XDG_DATA_HOME"/platformio
 export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
@@ -87,18 +87,13 @@ export NVM_DIR="$XDG_DATA_HOME"/nvm
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 
+ScreenSize=$(xdpyinfo | grep dimensions | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/')
 
-### Load colors
-###############
-# autoload colors zsh/terminfo
-# if [[ "$terminfo[colors]" -ge 8 ]]; then
-#    colors
-# fi
-# for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
-#    eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-#    eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
-#    (( count = $count + 1 ))
-# done
+if [[ "$ScreenSize" == "3440x1440" ]]; then
+    export DEVICE="desktop"
+else
+    export DEVICE="laptop"
+fi
 
 ### Set Colors to use in in the script
 #############
@@ -139,7 +134,7 @@ NC="\e[m"               # Color Reset
 unsetopt ALL_EXPORT
 
 ### Set packages
-pacman -Qqe > ~/dots/packages.txt
+yay -Qqe > ~/dots/packages.txt
 
 ### set common functions
 #############
@@ -278,6 +273,7 @@ bindkey "^[[B" history-beginning-search-forward-end
 bindkey "^r" history-incremental-search-backward
 bindkey ' ' magic-space    # also do history expansion on space
 bindkey '^I' complete-word # complete on tab, leave expansion to _expand
+bindkey "^[[3~" delete-char
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
 
@@ -390,3 +386,6 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh

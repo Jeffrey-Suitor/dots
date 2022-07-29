@@ -190,6 +190,12 @@ _G.packer_plugins = {
     path = "/home/jeff/.local/share/nvim/site/pack/packer/start/leap.nvim",
     url = "https://github.com/ggandor/leap.nvim"
   },
+  ["lsp_lines.nvim"] = {
+    config = { 'require("setup/lsp_lines")' },
+    loaded = true,
+    path = "/home/jeff/.local/share/nvim/site/pack/packer/start/lsp_lines.nvim",
+    url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+  },
   ["lsp_signature.nvim"] = {
     config = { 'require("setup/lsp_signature")' },
     loaded = true,
@@ -212,6 +218,21 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jeff/.local/share/nvim/site/pack/packer/start/marks.nvim",
     url = "https://github.com/chentoast/marks.nvim"
+  },
+  ["mason-lspconfig.nvim"] = {
+    loaded = true,
+    path = "/home/jeff/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason-tool-installer.nvim"] = {
+    loaded = true,
+    path = "/home/jeff/.local/share/nvim/site/pack/packer/start/mason-tool-installer.nvim",
+    url = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim"
+  },
+  ["mason.nvim"] = {
+    loaded = true,
+    path = "/home/jeff/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
   },
   neogit = {
     loaded = true,
@@ -247,12 +268,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jeff/.local/share/nvim/site/pack/packer/start/nvim-hlslens",
     url = "https://github.com/kevinhwang91/nvim-hlslens"
-  },
-  ["nvim-lsp-installer"] = {
-    config = { 'require("setup/lsp-installer")' },
-    loaded = true,
-    path = "/home/jeff/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
-    url = "https://github.com/williamboman/nvim-lsp-installer"
   },
   ["nvim-lspconfig"] = {
     config = { 'require("setup/lsp")' },
@@ -300,6 +315,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jeff/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["project.nvim"] = {
+    config = { 'require("setup/project")' },
+    loaded = true,
+    path = "/home/jeff/.local/share/nvim/site/pack/packer/start/project.nvim",
+    url = "https://github.com/ahmedkhalf/project.nvim"
   },
   ["session-lens"] = {
     config = { 'require("setup/session-lens")' },
@@ -400,16 +421,15 @@ _G.packer_plugins = {
     path = "/home/jeff/.local/share/nvim/site/pack/packer/start/vim-hardtime",
     url = "https://github.com/takac/vim-hardtime"
   },
+  ["vim-maximizer"] = {
+    loaded = true,
+    path = "/home/jeff/.local/share/nvim/site/pack/packer/start/vim-maximizer",
+    url = "https://github.com/szw/vim-maximizer"
+  },
   ["vim-repeat"] = {
     loaded = true,
     path = "/home/jeff/.local/share/nvim/site/pack/packer/start/vim-repeat",
     url = "https://github.com/tpope/vim-repeat"
-  },
-  ["vim-rooter"] = {
-    config = { 'require("setup/rooter")' },
-    loaded = true,
-    path = "/home/jeff/.local/share/nvim/site/pack/packer/start/vim-rooter",
-    url = "https://github.com/airblade/vim-rooter"
   },
   ["vim-sleuth"] = {
     loaded = true,
@@ -482,126 +502,126 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: marks.nvim
-time([[Config for marks.nvim]], true)
-require("setup/marks")
-time([[Config for marks.nvim]], false)
--- Config for: vim-asterisk
-time([[Config for vim-asterisk]], true)
-require("setup/asterisk")
-time([[Config for vim-asterisk]], false)
--- Config for: vim-hardtime
-time([[Config for vim-hardtime]], true)
-require("setup/hardtime")
-time([[Config for vim-hardtime]], false)
--- Config for: twilight.nvim
-time([[Config for twilight.nvim]], true)
-require("setup/twilight")
-time([[Config for twilight.nvim]], false)
--- Config for: null-ls.nvim
-time([[Config for null-ls.nvim]], true)
-require("setup/null-ls")
-time([[Config for null-ls.nvim]], false)
--- Config for: trouble.nvim
-time([[Config for trouble.nvim]], true)
-require("setup/trouble")
-time([[Config for trouble.nvim]], false)
--- Config for: tokyonight.nvim
-time([[Config for tokyonight.nvim]], true)
-require("setup/colorscheme")
-time([[Config for tokyonight.nvim]], false)
--- Config for: numb.nvim
-time([[Config for numb.nvim]], true)
-require("setup/numb")
-time([[Config for numb.nvim]], false)
--- Config for: todo-comments.nvim
-time([[Config for todo-comments.nvim]], true)
-require("setup/todo-comments")
-time([[Config for todo-comments.nvim]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-require("setup/telescope")
-time([[Config for telescope.nvim]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-require("setup/autopairs")
-time([[Config for nvim-autopairs]], false)
--- Config for: stabilize.nvim
-time([[Config for stabilize.nvim]], true)
-require("setup/stabilize")
-time([[Config for stabilize.nvim]], false)
--- Config for: flutter-tools.nvim
-time([[Config for flutter-tools.nvim]], true)
-require("setup/flutter-tools")
-time([[Config for flutter-tools.nvim]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-require("setup/cmp")
-time([[Config for nvim-cmp]], false)
--- Config for: lsp_signature.nvim
-time([[Config for lsp_signature.nvim]], true)
-require("setup/lsp_signature")
-time([[Config for lsp_signature.nvim]], false)
--- Config for: session-lens
-time([[Config for session-lens]], true)
-require("setup/session-lens")
-time([[Config for session-lens]], false)
--- Config for: nvim-hlslens
-time([[Config for nvim-hlslens]], true)
-require("setup/hlslens")
-time([[Config for nvim-hlslens]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-require("setup/which-key")
-time([[Config for which-key.nvim]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-require("setup/gitsigns")
-time([[Config for gitsigns.nvim]], false)
--- Config for: vim-rooter
-time([[Config for vim-rooter]], true)
-require("setup/rooter")
-time([[Config for vim-rooter]], false)
--- Config for: leap.nvim
-time([[Config for leap.nvim]], true)
-require("setup/leap")
-time([[Config for leap.nvim]], false)
--- Config for: hydra.nvim
-time([[Config for hydra.nvim]], true)
-require("setup/hydra")
-time([[Config for hydra.nvim]], false)
 -- Config for: nvim-lspconfig
 time([[Config for nvim-lspconfig]], true)
 require("setup/lsp")
 time([[Config for nvim-lspconfig]], false)
--- Config for: yanky.nvim
-time([[Config for yanky.nvim]], true)
-require("setup/yanky")
-time([[Config for yanky.nvim]], false)
--- Config for: indent-blankline.nvim
-time([[Config for indent-blankline.nvim]], true)
-require("setup/guides")
-time([[Config for indent-blankline.nvim]], false)
+-- Config for: stabilize.nvim
+time([[Config for stabilize.nvim]], true)
+require("setup/stabilize")
+time([[Config for stabilize.nvim]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 require("setup/treesitter")
 time([[Config for nvim-treesitter]], false)
--- Config for: zen-mode.nvim
-time([[Config for zen-mode.nvim]], true)
-require("setup/zen")
-time([[Config for zen-mode.nvim]], false)
--- Config for: lualine.nvim
-time([[Config for lualine.nvim]], true)
-require("setup/lualine")
-time([[Config for lualine.nvim]], false)
+-- Config for: nvim-hlslens
+time([[Config for nvim-hlslens]], true)
+require("setup/hlslens")
+time([[Config for nvim-hlslens]], false)
+-- Config for: indent-blankline.nvim
+time([[Config for indent-blankline.nvim]], true)
+require("setup/guides")
+time([[Config for indent-blankline.nvim]], false)
+-- Config for: session-lens
+time([[Config for session-lens]], true)
+require("setup/session-lens")
+time([[Config for session-lens]], false)
+-- Config for: trouble.nvim
+time([[Config for trouble.nvim]], true)
+require("setup/trouble")
+time([[Config for trouble.nvim]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require("setup/cmp")
+time([[Config for nvim-cmp]], false)
 -- Config for: FTerm.nvim
 time([[Config for FTerm.nvim]], true)
 require("setup/fterm")
 time([[Config for FTerm.nvim]], false)
--- Config for: nvim-lsp-installer
-time([[Config for nvim-lsp-installer]], true)
-require("setup/lsp-installer")
-time([[Config for nvim-lsp-installer]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+require("setup/autopairs")
+time([[Config for nvim-autopairs]], false)
+-- Config for: leap.nvim
+time([[Config for leap.nvim]], true)
+require("setup/leap")
+time([[Config for leap.nvim]], false)
+-- Config for: yanky.nvim
+time([[Config for yanky.nvim]], true)
+require("setup/yanky")
+time([[Config for yanky.nvim]], false)
+-- Config for: numb.nvim
+time([[Config for numb.nvim]], true)
+require("setup/numb")
+time([[Config for numb.nvim]], false)
+-- Config for: vim-hardtime
+time([[Config for vim-hardtime]], true)
+require("setup/hardtime")
+time([[Config for vim-hardtime]], false)
+-- Config for: null-ls.nvim
+time([[Config for null-ls.nvim]], true)
+require("setup/null-ls")
+time([[Config for null-ls.nvim]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require("setup/telescope")
+time([[Config for telescope.nvim]], false)
+-- Config for: project.nvim
+time([[Config for project.nvim]], true)
+require("setup/project")
+time([[Config for project.nvim]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+require("setup/which-key")
+time([[Config for which-key.nvim]], false)
+-- Config for: todo-comments.nvim
+time([[Config for todo-comments.nvim]], true)
+require("setup/todo-comments")
+time([[Config for todo-comments.nvim]], false)
+-- Config for: marks.nvim
+time([[Config for marks.nvim]], true)
+require("setup/marks")
+time([[Config for marks.nvim]], false)
+-- Config for: hydra.nvim
+time([[Config for hydra.nvim]], true)
+require("setup/hydra")
+time([[Config for hydra.nvim]], false)
+-- Config for: tokyonight.nvim
+time([[Config for tokyonight.nvim]], true)
+require("setup/colorscheme")
+time([[Config for tokyonight.nvim]], false)
+-- Config for: lsp_lines.nvim
+time([[Config for lsp_lines.nvim]], true)
+require("setup/lsp_lines")
+time([[Config for lsp_lines.nvim]], false)
+-- Config for: lsp_signature.nvim
+time([[Config for lsp_signature.nvim]], true)
+require("setup/lsp_signature")
+time([[Config for lsp_signature.nvim]], false)
+-- Config for: flutter-tools.nvim
+time([[Config for flutter-tools.nvim]], true)
+require("setup/flutter-tools")
+time([[Config for flutter-tools.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+require("setup/gitsigns")
+time([[Config for gitsigns.nvim]], false)
+-- Config for: zen-mode.nvim
+time([[Config for zen-mode.nvim]], true)
+require("setup/zen")
+time([[Config for zen-mode.nvim]], false)
+-- Config for: twilight.nvim
+time([[Config for twilight.nvim]], true)
+require("setup/twilight")
+time([[Config for twilight.nvim]], false)
+-- Config for: vim-asterisk
+time([[Config for vim-asterisk]], true)
+require("setup/asterisk")
+time([[Config for vim-asterisk]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+require("setup/lualine")
+time([[Config for lualine.nvim]], false)
 if should_profile then save_profiles() end
 
 end)
