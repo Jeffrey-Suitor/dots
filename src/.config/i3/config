@@ -8,6 +8,8 @@ floating_maximum_size 3840 x 2160
 focus_on_window_activation focus
 for_window [class="Spotify"] move to workspace $ws10
 for_window [class="Slack"] move to workspace $ws9
+for_window [class="Pulse Secure"] move to workspace $ws7
+for_window [class="Firefox"] move to workspace $ws7
 
 # Startup
 exec --no-startup-id feh --randomize --bg-scale ~/media/wallpapers/**/*
@@ -23,6 +25,8 @@ exec --no-startup-id redshift
 exec --no-startup-id easyeffects --gapplication-service
 exec --no-startup-id lxpolkit
 exec --no-startup-id qpwgraph -m
+exec --no-startup-id autorandr --change
+exec --no-startup-id firefox
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status

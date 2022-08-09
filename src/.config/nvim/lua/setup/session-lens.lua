@@ -9,10 +9,10 @@ require("auto-session").setup({
 
 require("which-key").register({
 	s = {
-		name = "session-manager",
-		["<Space>"] = { ":SearchSession<cr>", "search-session" },
-		s = { ":SaveSession<cr>", "save-session" },
-		r = { ":RestoreSession<cr>", "restore-session" },
-		d = { ":DeleteSession<cr>", "delete-session" },
+		name = "session manager",
+		["<Space>"] = { ":SearchSession<cr>", "search session" },
+		s = { ":SaveSession<cr>", "save session" },
+		r = { ":RestoreSession<cr>", "restore session" },
+		d = { ":DeleteSession<cr>", "delete session" },
 	},
 }, { prefix = "<leader>" })

@@ -3,15 +3,15 @@ local get_setup = require("utils").get_setup
 return require("packer").startup({
 	function(use)
 		use({ "wbthomason/packer.nvim" })
-		-- use({ "github/copilot.vim" })
 		use({ "folke/which-key.nvim", config = get_setup("which-key") })
 
 		--------------------- LSP -------------------
+
+		use({"williamboman/mason.nvim"})
+		use({"williamboman/mason-lspconfig.nvim"})
+		use({ "WhoIsSethDaniel/mason-tool-installer.nvim"})
+		use({"neovim/nvim-lspconfig"})
 		use({
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			"neovim/nvim-lspconfig",
 			"jose-elias-alvarez/null-ls.nvim",
 			config = get_setup("lsp"),
 		})
@@ -65,7 +65,6 @@ return require("packer").startup({
 		})
 		use({ "lukas-reineke/indent-blankline.nvim", config = get_setup("guides") })
 		use({ "ryanoasis/vim-devicons" })
-		-- use({ "unblevable/quick-scope" })
 		use({ "kevinhwang91/nvim-hlslens", config = get_setup("hlslens") })
 		use({ "haya14busa/vim-asterisk", config = get_setup("asterisk") })
 		use({ "luukvbaal/stabilize.nvim", config = get_setup("stabilize") })
@@ -74,6 +73,7 @@ return require("packer").startup({
 		----------------------------------------------
 
 		--------------- CODE -------------------------
+		use({ "ThePrimeagen/git-worktree.nvim" })
 		use({
 			"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 			config = get_setup("lsp_lines"),
@@ -133,7 +133,7 @@ return require("packer").startup({
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 		use({
 			"nvim-telescope/telescope.nvim",
-			requires = { { "nvim-lua/plenary.nvim", "gbprod/yanky.nvim" } },
+			requires = { { "nvim-lua/plenary.nvim" } },
 			config = get_setup("telescope"),
 		})
 		----------------------------------------------

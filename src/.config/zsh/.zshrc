@@ -87,6 +87,8 @@ export NVM_DIR="$XDG_DATA_HOME"/nvm
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 
+export VAULT_ADDR=https://vault.aws.autodesk.com
+
 ScreenSize=$(xdpyinfo | grep dimensions | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/')
 
 if [[ "$ScreenSize" == "3440x1440" ]]; then
@@ -389,3 +391,6 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/dots/src/.config/zsh/.p10k.zsh.
+[[ ! -f ~/dots/src/.config/zsh/.p10k.zsh ]] || source ~/dots/src/.config/zsh/.p10k.zsh

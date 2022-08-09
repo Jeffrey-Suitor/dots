@@ -40,6 +40,6 @@ wk.register({
 	r = { ":lua vim.lsp.buf.rename()<cr>", "rename" },
 	F = { ":lua vim.lsp.buf.format()<cr>", "format" },
 	["\\"] = { ":nohlsearch<cr>", "clear highlight" },
-	["1"] = { ":Neogit<cr>", "Git window" },
-	["8"] = { ":Vista<cr>", "Symbols" },
+	["1"] = { ":Neogit<cr>", "git window" },
+	["8"] = { ":Vista<cr>", "symbols" },
 }, { prefix = "<leader>" })

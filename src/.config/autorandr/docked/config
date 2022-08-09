@@ -1,10 +1,16 @@
-output HDMI-1
+output HDMI1
 off
-output eDP-1
+output VIRTUAL1
 off
-output DP-1
-crtc 0
+output eDP1
+off
+output DP1
+crtc 1
 mode 3440x1440
 pos 0x0
-primary
 rate 49.99
+x-prop-audio auto
+x-prop-broadcast_rgb Automatic
+x-prop-colorspace Default
+x-prop-max_bpc 12
+x-prop-non_desktop 0

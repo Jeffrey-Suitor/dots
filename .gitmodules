@@ -7,6 +7,9 @@
 [submodule "src/media"]
 	path = src/media
 	url = git@github.com:Jeffrey-Suitor/media.git
-[submodule "src/programs/AutoEq"]
-	path = src/programs/AutoEq
-	url = git@github.com:jaakkopasanen/AutoEq.git
+[submodule "src/programs/rofi-themes-collection"]
+	path = src/programs/rofi-themes-collection
+	url = https://github.com/lr-tech/rofi-themes-collection.git
+[submodule "src/programs/tempus-themes-kitty"]
+	path = src/programs/tempus-themes-kitty
+	url = https://github.com/protesilaos/tempus-themes.git

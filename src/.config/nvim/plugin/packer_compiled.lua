@@ -161,6 +161,11 @@ _G.packer_plugins = {
     path = "/home/jeff/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["git-worktree.nvim"] = {
+    loaded = true,
+    path = "/home/jeff/.local/share/nvim/site/pack/packer/start/git-worktree.nvim",
+    url = "https://github.com/ThePrimeagen/git-worktree.nvim"
+  },
   ["gitsigns.nvim"] = {
     config = { 'require("setup/gitsigns")' },
     loaded = true,
@@ -240,7 +245,7 @@ _G.packer_plugins = {
     url = "https://github.com/TimUntersberger/neogit"
   },
   ["null-ls.nvim"] = {
-    config = { 'require("setup/null-ls")' },
+    config = { 'require("setup/lsp")' },
     loaded = true,
     path = "/home/jeff/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
     url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
@@ -270,7 +275,6 @@ _G.packer_plugins = {
     url = "https://github.com/kevinhwang91/nvim-hlslens"
   },
   ["nvim-lspconfig"] = {
-    config = { 'require("setup/lsp")' },
     loaded = true,
     path = "/home/jeff/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
@@ -502,74 +506,102 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-require("setup/lsp")
-time([[Config for nvim-lspconfig]], false)
--- Config for: stabilize.nvim
-time([[Config for stabilize.nvim]], true)
-require("setup/stabilize")
-time([[Config for stabilize.nvim]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require("setup/treesitter")
-time([[Config for nvim-treesitter]], false)
--- Config for: nvim-hlslens
-time([[Config for nvim-hlslens]], true)
-require("setup/hlslens")
-time([[Config for nvim-hlslens]], false)
--- Config for: indent-blankline.nvim
-time([[Config for indent-blankline.nvim]], true)
-require("setup/guides")
-time([[Config for indent-blankline.nvim]], false)
--- Config for: session-lens
-time([[Config for session-lens]], true)
-require("setup/session-lens")
-time([[Config for session-lens]], false)
--- Config for: trouble.nvim
-time([[Config for trouble.nvim]], true)
-require("setup/trouble")
-time([[Config for trouble.nvim]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-require("setup/cmp")
-time([[Config for nvim-cmp]], false)
--- Config for: FTerm.nvim
-time([[Config for FTerm.nvim]], true)
-require("setup/fterm")
-time([[Config for FTerm.nvim]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-require("setup/autopairs")
-time([[Config for nvim-autopairs]], false)
 -- Config for: leap.nvim
 time([[Config for leap.nvim]], true)
 require("setup/leap")
 time([[Config for leap.nvim]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require("setup/cmp")
+time([[Config for nvim-cmp]], false)
+-- Config for: trouble.nvim
+time([[Config for trouble.nvim]], true)
+require("setup/trouble")
+time([[Config for trouble.nvim]], false)
+-- Config for: lsp_lines.nvim
+time([[Config for lsp_lines.nvim]], true)
+require("setup/lsp_lines")
+time([[Config for lsp_lines.nvim]], false)
+-- Config for: nvim-hlslens
+time([[Config for nvim-hlslens]], true)
+require("setup/hlslens")
+time([[Config for nvim-hlslens]], false)
+-- Config for: lsp_signature.nvim
+time([[Config for lsp_signature.nvim]], true)
+require("setup/lsp_signature")
+time([[Config for lsp_signature.nvim]], false)
+-- Config for: zen-mode.nvim
+time([[Config for zen-mode.nvim]], true)
+require("setup/zen")
+time([[Config for zen-mode.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require("setup/treesitter")
+time([[Config for nvim-treesitter]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+require("setup/lualine")
+time([[Config for lualine.nvim]], false)
 -- Config for: yanky.nvim
 time([[Config for yanky.nvim]], true)
 require("setup/yanky")
 time([[Config for yanky.nvim]], false)
--- Config for: numb.nvim
-time([[Config for numb.nvim]], true)
-require("setup/numb")
-time([[Config for numb.nvim]], false)
 -- Config for: vim-hardtime
 time([[Config for vim-hardtime]], true)
 require("setup/hardtime")
 time([[Config for vim-hardtime]], false)
--- Config for: null-ls.nvim
-time([[Config for null-ls.nvim]], true)
-require("setup/null-ls")
-time([[Config for null-ls.nvim]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-require("setup/telescope")
-time([[Config for telescope.nvim]], false)
+-- Config for: marks.nvim
+time([[Config for marks.nvim]], true)
+require("setup/marks")
+time([[Config for marks.nvim]], false)
+-- Config for: vim-asterisk
+time([[Config for vim-asterisk]], true)
+require("setup/asterisk")
+time([[Config for vim-asterisk]], false)
+-- Config for: twilight.nvim
+time([[Config for twilight.nvim]], true)
+require("setup/twilight")
+time([[Config for twilight.nvim]], false)
+-- Config for: numb.nvim
+time([[Config for numb.nvim]], true)
+require("setup/numb")
+time([[Config for numb.nvim]], false)
+-- Config for: flutter-tools.nvim
+time([[Config for flutter-tools.nvim]], true)
+require("setup/flutter-tools")
+time([[Config for flutter-tools.nvim]], false)
+-- Config for: FTerm.nvim
+time([[Config for FTerm.nvim]], true)
+require("setup/fterm")
+time([[Config for FTerm.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+require("setup/gitsigns")
+time([[Config for gitsigns.nvim]], false)
 -- Config for: project.nvim
 time([[Config for project.nvim]], true)
 require("setup/project")
 time([[Config for project.nvim]], false)
+-- Config for: stabilize.nvim
+time([[Config for stabilize.nvim]], true)
+require("setup/stabilize")
+time([[Config for stabilize.nvim]], false)
+-- Config for: hydra.nvim
+time([[Config for hydra.nvim]], true)
+require("setup/hydra")
+time([[Config for hydra.nvim]], false)
+-- Config for: session-lens
+time([[Config for session-lens]], true)
+require("setup/session-lens")
+time([[Config for session-lens]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require("setup/telescope")
+time([[Config for telescope.nvim]], false)
+-- Config for: indent-blankline.nvim
+time([[Config for indent-blankline.nvim]], true)
+require("setup/guides")
+time([[Config for indent-blankline.nvim]], false)
 -- Config for: which-key.nvim
 time([[Config for which-key.nvim]], true)
 require("setup/which-key")
@@ -578,50 +610,18 @@ time([[Config for which-key.nvim]], false)
 time([[Config for todo-comments.nvim]], true)
 require("setup/todo-comments")
 time([[Config for todo-comments.nvim]], false)
--- Config for: marks.nvim
-time([[Config for marks.nvim]], true)
-require("setup/marks")
-time([[Config for marks.nvim]], false)
--- Config for: hydra.nvim
-time([[Config for hydra.nvim]], true)
-require("setup/hydra")
-time([[Config for hydra.nvim]], false)
+-- Config for: null-ls.nvim
+time([[Config for null-ls.nvim]], true)
+require("setup/lsp")
+time([[Config for null-ls.nvim]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+require("setup/autopairs")
+time([[Config for nvim-autopairs]], false)
 -- Config for: tokyonight.nvim
 time([[Config for tokyonight.nvim]], true)
 require("setup/colorscheme")
 time([[Config for tokyonight.nvim]], false)
--- Config for: lsp_lines.nvim
-time([[Config for lsp_lines.nvim]], true)
-require("setup/lsp_lines")
-time([[Config for lsp_lines.nvim]], false)
--- Config for: lsp_signature.nvim
-time([[Config for lsp_signature.nvim]], true)
-require("setup/lsp_signature")
-time([[Config for lsp_signature.nvim]], false)
--- Config for: flutter-tools.nvim
-time([[Config for flutter-tools.nvim]], true)
-require("setup/flutter-tools")
-time([[Config for flutter-tools.nvim]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-require("setup/gitsigns")
-time([[Config for gitsigns.nvim]], false)
--- Config for: zen-mode.nvim
-time([[Config for zen-mode.nvim]], true)
-require("setup/zen")
-time([[Config for zen-mode.nvim]], false)
--- Config for: twilight.nvim
-time([[Config for twilight.nvim]], true)
-require("setup/twilight")
-time([[Config for twilight.nvim]], false)
--- Config for: vim-asterisk
-time([[Config for vim-asterisk]], true)
-require("setup/asterisk")
-time([[Config for vim-asterisk]], false)
--- Config for: lualine.nvim
-time([[Config for lualine.nvim]], true)
-require("setup/lualine")
-time([[Config for lualine.nvim]], false)
 if should_profile then save_profiles() end
 
 end)
