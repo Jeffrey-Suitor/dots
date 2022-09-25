@@ -26,7 +26,6 @@ exec --no-startup-id easyeffects --gapplication-service
 exec --no-startup-id lxpolkit
 exec --no-startup-id qpwgraph -m
 exec --no-startup-id autorandr --change
-exec --no-startup-id firefox
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
