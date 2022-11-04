@@ -7,10 +7,10 @@ return require("packer").startup({
 
 		--------------------- LSP -------------------
 
-		use({"williamboman/mason.nvim"})
-		use({"williamboman/mason-lspconfig.nvim"})
-		use({ "WhoIsSethDaniel/mason-tool-installer.nvim"})
-		use({"neovim/nvim-lspconfig"})
+		use({ "williamboman/mason.nvim" })
+		use({ "williamboman/mason-lspconfig.nvim" })
+		use({ "WhoIsSethDaniel/mason-tool-installer.nvim" })
+		use({ "neovim/nvim-lspconfig" })
 		use({
 			"jose-elias-alvarez/null-ls.nvim",
 			config = get_setup("lsp"),
@@ -26,6 +26,7 @@ return require("packer").startup({
 		----------------------------------------------
 
 		-------------- UX IMPROVEMENTS ---------------
+		use({ "smjonas/live-command.nvim", config = get_setup("live-command") })
 		use({ "takac/vim-hardtime", config = get_setup("hardtime") })
 		use({ "szw/vim-maximizer" })
 		use({ "sindrets/winshift.nvim" })
@@ -33,7 +34,6 @@ return require("packer").startup({
 		use({ "nacro90/numb.nvim", config = get_setup("numb") })
 		use({ "gbprod/yanky.nvim", config = get_setup("yanky") })
 		use({ "tpope/vim-surround" })
-		use({ "numtostr/FTerm.nvim", config = get_setup("fterm") })
 		use({ "djoshea/vim-autoread" })
 		use({ "tpope/vim-speeddating" })
 		use({ "tpope/vim-repeat" })
@@ -56,7 +56,7 @@ return require("packer").startup({
 		use({ "danilamihailov/beacon.nvim" })
 		use({ "folke/twilight.nvim", config = get_setup("twilight") })
 		use({ "folke/zen-mode.nvim", config = get_setup("zen") })
-		use({ "romgrk/barbar.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
+		use({ "romgrk/barbar.nvim", requires = { "kyazdani42/nvim-web-devicons" }, config = get_setup("barbar") })
 		use({ "chentoast/marks.nvim", config = get_setup("marks") })
 		use({
 			"nvim-lualine/lualine.nvim",
@@ -67,13 +67,16 @@ return require("packer").startup({
 		use({ "ryanoasis/vim-devicons" })
 		use({ "kevinhwang91/nvim-hlslens", config = get_setup("hlslens") })
 		use({ "haya14busa/vim-asterisk", config = get_setup("asterisk") })
-		use({ "luukvbaal/stabilize.nvim", config = get_setup("stabilize") })
 		use({ "onsails/lspkind-nvim" })
+
+		--------------- Colorschemes ------------------
+		use({ "catppuccin/nvim", as = "catppuccin" })
 		use({ "folke/tokyonight.nvim", config = get_setup("colorscheme") })
 		----------------------------------------------
 
 		--------------- CODE -------------------------
 		use({ "ThePrimeagen/git-worktree.nvim" })
+		use({ "ThePrimeagen/harpoon", config = get_setup("harpoon") })
 		use({
 			"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 			config = get_setup("lsp_lines"),
@@ -123,7 +126,6 @@ return require("packer").startup({
 		----------------------------------------------
 
 		----------------- TELESCOPE ------------------
-		use({ "cljoly/telescope-repo.nvim" })
 		use({ "nvim-telescope/telescope-file-browser.nvim" })
 		use({
 			"rmagatti/session-lens",

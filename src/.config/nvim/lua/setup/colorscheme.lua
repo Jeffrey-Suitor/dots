@@ -1,2 +1,7 @@
-vim.cmd([[colorscheme tokyonight]])
--- vim.o.background = "light"
+vim.cmd[[colorscheme tokyonight]]
+
+vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha
+
+require("catppuccin").setup()
+
+vim.cmd [[colorscheme catppuccin]]

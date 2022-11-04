@@ -10,8 +10,8 @@ require("mason-tool-installer").setup({
 		"actionlint",
 		"codespell",
 		"editorconfig-checker",
-		"eslint-lsp",
-		"prettierd",
+		-- "eslint-lsp",
+		-- "prettierd",
 		"stylua",
 	},
 	run_on_start = true,
@@ -23,7 +23,7 @@ null_ls.setup({
 	debug = true,
 	sources = {
 		-- code actions
-		null_ls.builtins.code_actions.eslint,
+		-- null_ls.builtins.code_actions.eslint,
 		null_ls.builtins.code_actions.gitsigns,
 		null_ls.builtins.code_actions.refactoring,
 		null_ls.builtins.code_actions.shellcheck,
@@ -34,13 +34,14 @@ null_ls.setup({
 		-- diagnostics
 		null_ls.builtins.diagnostics.actionlint,
 		null_ls.builtins.diagnostics.codespell,
-		null_ls.builtins.diagnostics.editorconfig_checker,
-		null_ls.builtins.diagnostics.eslint,
+		null_ls.builtins.diagnostics.rubocop,
+		-- null_ls.builtins.diagnostics.editorconfig_checker,
+		-- null_ls.builtins.diagnostics.eslint,
 		null_ls.builtins.diagnostics.shellcheck,
 		null_ls.builtins.diagnostics.zsh,
 		-- formatting
 		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.prettierd,
+		-- null_ls.builtins.formatting.prettierd,
 		-- null_ls.builtins.formatting.trim_newlines,
 		-- null_ls.builtins.formatting.trim_whitespace,
 	},
@@ -54,9 +55,9 @@ null_ls.setup({
 				callback = function()
 					vim.lsp.buf.format({
 						bufnr = bufnr,
-						filter = function(server)
-							return server.name == "null-ls"
-						end,
+						-- filter = function(server)
+						-- 	return server.name == "null-ls"
+						-- end,
 					})
 				end,
 			})
@@ -64,7 +65,7 @@ null_ls.setup({
 	end,
 })
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 require("lspconfig")["sumneko_lua"].setup({
 	on_attach = function(client)
@@ -82,11 +83,11 @@ require("lspconfig")["sumneko_lua"].setup({
 	},
 })
 
+require("lspconfig")["jdtls"].setup({
+	capabilities = capabilities,
+})
+
 require("lspconfig")["tsserver"].setup({
-	on_attach = function(client)
-		client.server_capabilities.document_formatting = false
-		client.server_capabilities.document_range_formatting = false
-	end,
 	capabilities = capabilities,
 })
 
@@ -99,6 +100,10 @@ require("lspconfig")["clangd"].setup({
 })
 
 require("lspconfig")["jsonls"].setup({
+	capabilities = capabilities,
+})
+
+require("lspconfig")["solargraph"].setup({
 	capabilities = capabilities,
 })
 

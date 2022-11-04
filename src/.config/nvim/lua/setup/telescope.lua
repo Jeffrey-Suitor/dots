@@ -2,23 +2,10 @@ require("telescope").setup({
 	defaults = {
 		file_ignore_patterns = { "node_modules", ".git", "undo" },
 	},
-	extensions = {
-		repo = {
-			list = {
-				fd_opts = {
-					"--no-ignore-vcs",
-				},
-				search_dirs = {
-					"~/code",
-				},
-			},
-		},
-	},
 })
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("session-lens")
 require("telescope").load_extension("file_browser")
-require("telescope").load_extension("repo")
 require("telescope").load_extension("yank_history")
 require("telescope").load_extension("projects")
 require("telescope").load_extension("git_worktree")
@@ -33,8 +20,9 @@ wk.register({
 		F = { ":Telescope file_browser<CR>", "file browser" },
 		g = { ":Telescope git_files<CR>", "git files" },
 		b = { ":Telescope buffers<CR>", "buffers" },
-		r = { ":Telescope repo list<CR>", "repos" },
-		h = { ":Telescope help_tags<CR>", "help tags" },
+		p = { ":Telescope projects<CR>", "projects" },
+		h = { ":Telescope harpoon marks<CR>", "harpoon" },
+		H = { ":Telescope help_tags<CR>", "help tags" },
 		R = { ":Telescope live_grep<CR>", "live grep" },
 		t = { ":Telescope tags<CR>", "tags" },
 		m = { ":Telescope marks<CR>", "marks" },
@@ -45,7 +33,7 @@ wk.register({
 		c = { ":Telescope command_history<CR>", "command history" },
 		M = { ":Telescope keymaps<CR>", "keymaps" },
 		s = { ":Telescope search_history<CR>", "search history" },
-		s = { ":Vista finder<CR>", "search history" },
+		S = { ":Vista finder<CR>", "search history" },
 	},
 	G = {
 		name = "+git worktrees",
@@ -53,7 +41,7 @@ wk.register({
 		g = { ":Telescope git_worktree git_worktrees<CR>", "worktrees" },
 		["<Space>"] = { ":Telescope git_worktree git_worktrees<CR>", "worktrees" },
 	},
-	m = { ":Telescope marks<CR>", "marks" },
+	M = { ":Telescope marks<CR>", "marks" },
 }, { prefix = "<leader>" })
 
 local map = require("../utils").map

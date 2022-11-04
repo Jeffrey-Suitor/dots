@@ -1,5 +1,6 @@
 require('nvim-treesitter.configs').setup {
-	ensure_installed = "all",
+    -- ensure_installed = "all",
+    ignore_install = { "php" },
 	highlight = {
 		enable = true
 	},
@@ -12,5 +13,5 @@ require('nvim-treesitter.configs').setup {
 	},
 	autotag = {
 		enable = true
-	}
+	},
 }
