@@ -68,7 +68,7 @@ path=(~/bin $path)
 
 # Export environment variables.
 export GPG_TTY=$TTY
-export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority 
+#export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority 
 export WINEPREFIX="$XDG_DATA_HOME"/wine
 export PLATFORMIO_CORE_DIR="$XDG_DATA_HOME"/platformio
 export TERMINFO="$XDG_DATA_HOME"/terminfo                                                           

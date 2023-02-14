@@ -1,5 +1,4 @@
 local opt = vim.opt
-opt.autoread = true
 opt.backspace = { "indent", "eol", "start" }
 opt.belloff = "all"
 opt.breakindent = true
@@ -34,7 +33,7 @@ vim.onobackup = true -- No backup files
 vim.onowritebackup = true -- No backup files
 opt.scrolloff = 4 -- Lines of context
 opt.shiftround = true -- Round indent
-opt.shiftwidth = 2 -- Size of an indent
+opt.shiftwidth = 4 -- Size of an indent
 opt.showmode = false -- Don't display mode
 opt.sidescrolloff = 8 -- Columns of context
 opt.signcolumn = "yes:1" -- always show signcolumns
@@ -45,7 +44,8 @@ opt.showbreak = "\\ "
 opt.spelllang = { "en_ca" }
 opt.splitbelow = true -- Put new windows below current
 opt.splitright = true -- Put new windows right of current
-opt.tabstop = 2 -- Number of spaces tabs count for
+opt.tabstop = 4 -- Number of spaces tabs count for
+opt.termguicolors = true
 opt.title = true
 opt.wrap = true
 opt.mouse = "a"
@@ -54,5 +54,3 @@ opt.undofile = true
 opt.cmdheight = 0
 opt.wildignore = "*.zip,*.png,*.jpg,*.gif,*.pdf,*DS_Store*,*/.git/*,*/node_modules/*,*/build/*,package-lock.json"
 vim.o.splitkeep = "screen"
-
-vim.cmd.colorscheme "catppuccin" -- catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
